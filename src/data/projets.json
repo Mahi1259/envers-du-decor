@@ -1,0 +1,156 @@
+[
+  {
+    "id": "dark_patterns",
+    "titre": "Interface Trompeuse",
+    "sousTitre": "Dark Patterns UX",
+    "emoji": "🖱️",
+    "description": "Bouton 'TOUT ACCEPTER' en vert vif, option de refus cachée en 3 sous-menus gris. Le consentement n'est plus libre — violation directe du RGPD Art. 7.",
+    "loi": "RGPD Art. 7 — Consentement",
+    "coutAchat": 5000,
+    "revenuQuotidien": 30000,
+    "risqueQuotidien": 20,
+    "niveau": "FAIBLE",
+    "info": {
+      "titre": "Les Dark Patterns — Manipulation par le Design",
+      "explication": "Un dark pattern est une interface délibérément conçue pour tromper l'utilisateur. Dans le domaine du consentement aux données, cela consiste à rendre le bouton 'Accepter tout' immense et coloré, tandis que le refus est caché dans des sous-menus complexes. Le consentement obtenu de cette manière n'est pas légalement valide selon le RGPD, qui exige un consentement libre, éclairé et explicite.",
+      "exemples": [
+        "Google condamné à 150 millions € par la CNIL en 2022 pour cookies non refusables facilement.",
+        "Facebook sanctionné par l'autorité irlandaise pour dark patterns dans ses paramètres de confidentialité.",
+        "Amazon condamné à 746 millions € pour pratiques similaires en 2021."
+      ],
+      "consequence": "Amende jusqu'à 20 millions € ou 4% du chiffre d'affaires mondial (Art. 83 RGPD)."
+    }
+  },
+  {
+    "id": "collecte_massive",
+    "titre": "Aspiration KYC Totale",
+    "sousTitre": "Collecte de données personnelles",
+    "emoji": "📋",
+    "description": "Nom réel, adresse physique, numéro de téléphone obligatoires à l'inscription. Viole le principe de minimisation des données (Art. 5 RGPD).",
+    "loi": "RGPD Art. 5 — Minimisation",
+    "coutAchat": 10000,
+    "revenuQuotidien": 40000,
+    "risqueQuotidien": 15,
+    "niveau": "FAIBLE",
+    "info": {
+      "titre": "La Minimisation des Données — Collecter Seulement le Nécessaire",
+      "explication": "Le principe de minimisation des données (Art. 5 RGPD) impose de ne collecter que les données strictement nécessaires à la finalité déclarée. Exiger le nom complet, l'adresse et le téléphone pour jouer à un jeu vidéo viole ce principe fondamental. Les données personnelles inutiles représentent aussi un risque de sécurité supplémentaire en cas de piratage.",
+      "exemples": [
+        "Fortnite (Epic Games) condamné à 275 millions $ par la FTC américaine pour collecte excessive de données d'enfants.",
+        "TikTok sanctionné à 345 millions € pour collecte de données de mineurs sans base légale valide.",
+        "Activision poursuivi pour collecte non justifiée de données biométriques via ses jeux."
+      ],
+      "consequence": "Violation de l'Art. 5(1)(c) RGPD et Art. 6 LPD suisse. Sanctions pénales jusqu'à 250 000 CHF en Suisse."
+    }
+  },
+  {
+    "id": "bloquer_oubli",
+    "titre": "Blocage Droit à l'Oubli",
+    "sousTitre": "Suppression des comptes refusée",
+    "emoji": "🔒",
+    "description": "Demandes de suppression ignorées ou repoussées à 6 mois. La LPD suisse et RGPD Art. 17 imposent une suppression rapide et effective.",
+    "loi": "RGPD Art. 17 — Droit à l'effacement",
+    "coutAchat": 12000,
+    "revenuQuotidien": 15000,
+    "risqueQuotidien": 50,
+    "niveau": "CRITIQUE",
+    "info": {
+      "titre": "Le Droit à l'Effacement — Votre Droit d'Être Oublié",
+      "explication": "L'article 17 du RGPD garantit à chaque utilisateur le droit de demander la suppression de ses données personnelles. Les entreprises ont généralement 30 jours pour traiter ces demandes. Ignorer ces demandes ou les retarder artificiellement constitue une violation grave. En Suisse, la nouvelle LPD (entrée en vigueur en 2023) prévoit des sanctions pénales directes contre les responsables.",
+      "exemples": [
+        "Google condamné plusieurs fois pour ne pas avoir supprimé des résultats de recherche suite à des demandes légitimes.",
+        "Spotify critiqué pour rendre la suppression de compte intentionnellement complexe et longue.",
+        "EA Games sanctionné pour conservation de données de joueurs inactifs depuis plus de 10 ans."
+      ],
+      "consequence": "Violation directe Art. 17 RGPD. Amende jusqu'à 20M€. En Suisse: poursuite pénale personnelle du dirigeant."
+    }
+  },
+  {
+    "id": "data_brokers",
+    "titre": "Revente aux Data Brokers",
+    "sousTitre": "Monétisation base de données",
+    "emoji": "💾",
+    "description": "Vente de la base joueurs à des courtiers. La pseudonymisation (#84729) simule l'anonymat, mais la ré-identification reste possible et probable.",
+    "loi": "RGPD Art. 6 — Licéité du traitement",
+    "coutAchat": 25000,
+    "revenuQuotidien": 90000,
+    "risqueQuotidien": 25,
+    "niveau": "MOYEN",
+    "info": {
+      "titre": "Les Courtiers en Données — L'Économie Invisible de Vos Données",
+      "explication": "Les data brokers sont des entreprises qui achètent et revendent des bases de données personnelles. La pseudonymisation — remplacer les noms par des codes (#84729) — ne constitue pas une anonymisation réelle. Des études montrent que 87% des personnes peuvent être ré-identifiées avec seulement 3 points de données. Vendre des données pseudonymisées sans consentement explicite viole le RGPD.",
+      "exemples": [
+        "Ubisoft accusé en mars 2026 de revente de données comportementales de joueurs à des tiers publicitaires.",
+        "Zynga (Words with Friends) piraté en 2019 — 218 millions de comptes exposés après revente à un broker.",
+        "Nielsen Holdings condamné pour revente de données de consommateurs sans base légale valide."
+      ],
+      "consequence": "Violation Art. 6 et 44 RGPD (transfert illicite). Amende jusqu'à 4% du CA mondial."
+    }
+  },
+  {
+    "id": "entrainement_ia",
+    "titre": "Écoute Vocale Secrète",
+    "sousTitre": "Entraînement IA non déclaré",
+    "emoji": "🎙️",
+    "description": "Enregistrement secret des conversations in-game pour entraîner nos modèles d'IA. Violation directe de la transparence RGPD et de la LPD suisse.",
+    "loi": "RGPD Art. 13 — Transparence",
+    "coutAchat": 35000,
+    "revenuQuotidien": 85000,
+    "risqueQuotidien": 30,
+    "niveau": "ÉLEVÉ",
+    "info": {
+      "titre": "L'Entraînement d'IA avec des Données Vocales — Une Pratique Très Risquée",
+      "explication": "Enregistrer des conversations vocales pour entraîner des modèles d'IA sans en informer clairement les utilisateurs viole l'obligation de transparence du RGPD (Art. 13). Les données vocales sont considérées comme des données biométriques potentielles. L'utilisateur doit être informé de cette finalité AVANT que la collecte commence, et non dans une clause cachée des CGU.",
+      "exemples": [
+        "Apple condamné pour avoir utilisé des enregistrements Siri pour entraîner son IA sans consentement explicite.",
+        "Amazon poursuivi pour enregistrements Alexa utilisés par des employés humains pour annoter les données.",
+        "Discord mis en cause pour utilisation de conversations pour entraîner des systèmes d'IA internes."
+      ],
+      "consequence": "Violation Art. 13 et 9 RGPD (données biométriques). Sanctions jusqu'à 20M€ + poursuites pénales."
+    }
+  },
+  {
+    "id": "sdk_tiers",
+    "titre": "5 SDK Publicitaires",
+    "sousTitre": "Trackers invisibles intégrés",
+    "emoji": "📡",
+    "description": "Boîtes à outils tierces intégrées dans le code. Extraction silencieuse de l'IP et de la géolocalisation exacte pour ciblage publicitaire ultra-précis.",
+    "loi": "RGPD Art. 5 — Finalité limitée",
+    "coutAchat": 40000,
+    "revenuQuotidien": 120000,
+    "risqueQuotidien": 35,
+    "niveau": "ÉLEVÉ",
+    "info": {
+      "titre": "Les SDK Publicitaires — Les Espions Cachés Dans Vos Applications",
+      "explication": "Un SDK publicitaire est un bloc de code tiers intégré dans une application. Ces outils collectent silencieusement l'adresse IP, la localisation GPS, les habitudes d'utilisation et l'identifiant publicitaire de l'appareil. L'intégration de 5 SDK simultanément multiplie la collecte et viole le principe de limitation des finalités: les données collectées pour améliorer le jeu sont utilisées pour du ciblage publicitaire non déclaré.",
+      "exemples": [
+        "Grindr sanctionné à 6,5 millions € pour partage de données de localisation avec des SDK publicitaires.",
+        "Angry Birds (Rovio) exposé en 2014 par les documents Snowden pour transmission de données à la NSA via SDK.",
+        "La FTC américaine a poursuivi plusieurs développeurs de jeux mobiles pour partage non déclaré via SDK."
+      ],
+      "consequence": "Violation Art. 5(1)(b) RGPD — détournement de finalité. Amende jusqu'à 4% du CA mondial."
+    }
+  },
+  {
+    "id": "kernel_anticheat",
+    "titre": "Anti-Cheat Kernel Level",
+    "sousTitre": "Accès total à l'ordinateur",
+    "emoji": "💀",
+    "description": "Logiciel anti-triche accédant au noyau système de l'ordinateur du joueur. Télémétrie massive non déclarée. Le joueur n'a aucun contrôle réel.",
+    "loi": "RGPD Art. 25 — Privacy by Design",
+    "coutAchat": 80000,
+    "revenuQuotidien": 200000,
+    "risqueQuotidien": 45,
+    "niveau": "CRITIQUE",
+    "info": {
+      "titre": "L'Anti-Cheat Kernel — Quand le Jeu Prend le Contrôle de Votre PC",
+      "explication": "Un anti-cheat kernel level s'installe au niveau le plus profond du système d'exploitation. Il a un accès quasi-total à toutes les données de l'ordinateur: fichiers, processus, mémoire, réseau. Bien que justifié par la lutte contre la triche, ce niveau d'accès va bien au-delà du nécessaire et viole le principe de Privacy by Design qui impose de minimiser l'accès aux données dès la conception du logiciel.",
+      "exemples": [
+        "Riot Games (Vanguard anti-cheat de Valorant) critiqué massivement pour son accès kernel permanent, même quand le jeu est fermé.",
+        "Activision (Ricochet anti-cheat) accusé d'accéder à des données non liées au jeu.",
+        "Plusieurs anti-cheats kernel ont été exploités comme vecteurs d'attaque par des hackers, exposant des millions de PC."
+      ],
+      "consequence": "Violation Art. 25 RGPD (Privacy by Design) et Art. 5(1)(c) (minimisation). Risque de poursuites pénales pour accès non autorisé à système informatique."
+    }
+  }
+]
