@@ -112,23 +112,17 @@ export default function EcranIntro() {
       </div>
 
       {!started && (
-        <button
-          onClick={handleStart}
+        <div
           style={{
             position: 'absolute',
             inset: 0,
-            width: '100%',
-            height: '100%',
             background: 'radial-gradient(ellipse at center, #14142a 0%, #050510 70%, #000 100%)',
-            border: 'none',
-            cursor: 'pointer',
             zIndex: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
             gap: 24,
-            padding: 0,
           }}
         >
           <p
@@ -157,7 +151,8 @@ export default function EcranIntro() {
           >
             L'Envers du Décor
           </h1>
-          <div
+          <button
+            onClick={handleStart}
             style={{
               marginTop: 32,
               padding: '14px 36px',
@@ -171,11 +166,12 @@ export default function EcranIntro() {
               background: 'rgba(102,102,221,0.08)',
               boxShadow: '0 0 24px rgba(102,102,221,0.25)',
               animation: 'pulse-glow 2.4s infinite',
+              cursor: 'pointer',
             }}
           >
             ▶  Cliquer pour commencer
-          </div>
-        </button>
+          </button>
+        </div>
       )}
 
       {started && showSkip && (
