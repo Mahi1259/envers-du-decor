@@ -4,51 +4,26 @@ import { useGame } from '../context/GameContext'
 export default function EcranIntro() {
   const { setStatutJeu } = useGame()
   const videoRef = useRef(null)
+  const [started, setStarted] = useState(false)
   const [showSkip, setShowSkip] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
-  const [muted, setMuted] = useState(false)
 
   useEffect(() => {
+    if (!started) return
     const timer = setTimeout(() => setShowSkip(true), 3000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [started])
 
-  useEffect(() => {
-    const v = videoRef.current
-    if (!v) return
-    v.muted = false
-    v.volume = 1
-    const tryPlay = v.play()
-    if (tryPlay && typeof tryPlay.catch === 'function') {
-      tryPlay.catch(() => {
-        v.muted = true
-        setMuted(true)
-        v.play().catch(() => {})
-      })
-    }
-  }, [])
-
-  useEffect(() => {
-    if (!muted) return
-    const unmute = () => {
+  function handleStart() {
+    setStarted(true)
+    requestAnimationFrame(() => {
       const v = videoRef.current
-      if (v) {
-        v.muted = false
-        v.volume = 1
-      }
-      setMuted(false)
-    }
-    window.addEventListener('click', unmute, { once: true })
-    window.addEventListener('keydown', unmute, { once: true })
-    window.addEventListener('touchstart', unmute, { once: true })
-    window.addEventListener('pointerdown', unmute, { once: true })
-    return () => {
-      window.removeEventListener('click', unmute)
-      window.removeEventListener('keydown', unmute)
-      window.removeEventListener('touchstart', unmute)
-      window.removeEventListener('pointerdown', unmute)
-    }
-  }, [muted])
+      if (!v) return
+      v.muted = false
+      v.volume = 1
+      v.play().catch(() => {})
+    })
+  }
 
   function goToNext() {
     setFadeOut(true)
@@ -66,21 +41,23 @@ export default function EcranIntro() {
         transition: 'opacity 0.8s ease',
       }}
     >
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        onEnded={goToNext}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          position: 'absolute',
-          inset: 0,
-        }}
-      >
-        <source src="/video.mp4" type="video/mp4" />
-      </video>
+      {started && (
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          onEnded={goToNext}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            inset: 0,
+          }}
+        >
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+      )}
 
       <div
         style={{
@@ -101,7 +78,8 @@ export default function EcranIntro() {
           right: 0,
           textAlign: 'center',
           zIndex: 2,
-          animation: 'fadeIn 2s ease 4s both',
+          animation: started ? 'fadeIn 2s ease 4s both' : 'none',
+          opacity: started ? undefined : 0,
           pointerEvents: 'none',
         }}
       >
@@ -133,7 +111,74 @@ export default function EcranIntro() {
         </h1>
       </div>
 
-      {showSkip && (
+      {!started && (
+        <button
+          onClick={handleStart}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            background: 'radial-gradient(ellipse at center, #14142a 0%, #050510 70%, #000 100%)',
+            border: 'none',
+            cursor: 'pointer',
+            zIndex: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 24,
+            padding: 0,
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 300,
+              fontSize: 11,
+              color: 'rgba(255,255,255,0.45)',
+              letterSpacing: '0.5em',
+              textTransform: 'uppercase',
+              margin: 0,
+            }}
+          >
+            DataMax Divertissement
+          </p>
+          <h1
+            style={{
+              fontFamily: 'Playfair Display, Georgia, serif',
+              fontWeight: 700,
+              fontSize: 64,
+              color: '#ffffff',
+              letterSpacing: '0.05em',
+              textShadow: '0 0 40px rgba(102,102,221,0.9), 0 0 80px rgba(102,102,221,0.4)',
+              margin: 0,
+            }}
+          >
+            L'Envers du Décor
+          </h1>
+          <div
+            style={{
+              marginTop: 32,
+              padding: '14px 36px',
+              border: '1px solid rgba(102,102,221,0.6)',
+              borderRadius: 4,
+              color: 'rgba(255,255,255,0.85)',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 13,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              background: 'rgba(102,102,221,0.08)',
+              boxShadow: '0 0 24px rgba(102,102,221,0.25)',
+              animation: 'pulse-glow 2.4s infinite',
+            }}
+          >
+            ▶  Cliquer pour commencer
+          </div>
+        </button>
+      )}
+
+      {started && showSkip && (
         <button
           onClick={goToNext}
           style={{
