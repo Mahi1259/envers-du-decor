@@ -2,7 +2,7 @@ export default function ModaleInfo({ projet, onClose }) {
   const { info, titre, emoji } = projet
 
   return (
-    <div style={styles.overlay} onClick={onClose}>
+    <div style={styles.overlay}>
       <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div style={styles.header}>
           <div style={styles.headerLeft}>
@@ -46,9 +46,6 @@ export default function ModaleInfo({ projet, onClose }) {
           <span style={styles.footerText}>
             Source: RGPD, LPD suisse, jurisprudence CNIL 2022–2026
           </span>
-          <button style={styles.fermerBtn} onClick={onClose}>
-            Fermer
-          </button>
         </div>
       </div>
     </div>

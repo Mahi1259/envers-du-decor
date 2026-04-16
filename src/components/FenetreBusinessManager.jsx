@@ -14,7 +14,7 @@ export default function FenetreBusinessManager({ onClose }) {
   const [infoProjet, setInfoProjet] = useState(null)
 
   return (
-    <div style={styles.overlay} onClick={onClose}>
+    <div style={styles.overlay}>
       <div style={styles.window} onClick={(e) => e.stopPropagation()}>
         <div style={styles.titleBar}>
           <div style={styles.title}>Boss Manager — Gestion des Projets</div>
