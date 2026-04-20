@@ -12,6 +12,9 @@ const ETAT_INITIAL = {
   risqueLegal: 0,
   projetsAchetes: [],
   projetsActifs: [],
+  projetsUtilises: [],
+  tutorialActive: true,
+  tutorialStep: 0,
   statutJeu: 'intro',
 }
 
@@ -21,6 +24,15 @@ export function GameProvider({ children }) {
   const setNomJoueur = (nom) => setEtat((s) => ({ ...s, nomJoueur: nom }))
 
   const setStatutJeu = (statut) => setEtat((s) => ({ ...s, statutJeu: statut }))
+
+  const setTutorialActive = (active) =>
+    setEtat((s) => ({ ...s, tutorialActive: active }))
+
+  const setTutorialStep = (step) =>
+    setEtat((s) => ({
+      ...s,
+      tutorialStep: typeof step === 'function' ? step(s.tutorialStep) : step,
+    }))
 
   const acheterProjet = (projet) => {
     setEtat((s) => {
@@ -38,11 +50,17 @@ export function GameProvider({ children }) {
     setEtat((s) => {
       if (!s.projetsAchetes.includes(projetId)) return s
       const actif = s.projetsActifs.includes(projetId)
+      const nextActifs = actif
+        ? s.projetsActifs.filter((id) => id !== projetId)
+        : [...s.projetsActifs, projetId]
+      const nextUtilises =
+        !actif && !s.projetsUtilises.includes(projetId)
+          ? [...s.projetsUtilises, projetId]
+          : s.projetsUtilises
       return {
         ...s,
-        projetsActifs: actif
-          ? s.projetsActifs.filter((id) => id !== projetId)
-          : [...s.projetsActifs, projetId],
+        projetsActifs: nextActifs,
+        projetsUtilises: nextUtilises,
       }
     })
   }
@@ -85,6 +103,8 @@ export function GameProvider({ children }) {
     ...derived,
     setNomJoueur,
     setStatutJeu,
+    setTutorialActive,
+    setTutorialStep,
     acheterProjet,
     toggleProjet,
     passerAuJourSuivant,

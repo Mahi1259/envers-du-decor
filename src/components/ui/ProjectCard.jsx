@@ -91,7 +91,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
             e.currentTarget.style.boxShadow = 'none'
           }}
         >
-          ACHETER — {fmt(projet.coutAchat)}$
+          ACHETER - {fmt(projet.coutAchat)} CHF
         </button>
       )
     }
@@ -100,7 +100,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
           <button disabled style={styles.lockedButton}>
-            🔒 {fmt(projet.coutAchat)}$ requis
+            {fmt(projet.coutAchat)} CHF requis
           </button>
           <span style={styles.insufficientText}>Fonds insuffisants</span>
         </div>
@@ -114,7 +114,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
             <span style={styles.labelActive}>ACTIF</span>
             <IosToggle on={true} onClick={handleToggle} />
           </div>
-          <span style={styles.earningsText}>+{fmt(projet.revenuQuotidien)}$/j actif</span>
+          <span style={styles.earningsText}>+{fmt(projet.revenuQuotidien)} CHF/j actif</span>
         </div>
       )
     }
@@ -129,12 +129,12 @@ export default function ProjectCard({ projet, onInfoClick }) {
 
   const cardStyle = isActive
     ? {
-        ...styles.card,
-        border: '1px solid #4444aa',
-        borderLeft: '3px solid #6666dd',
-        background: 'linear-gradient(135deg, rgba(30,30,80,0.6), rgba(8,8,20,0.6))',
-        boxShadow: '0 0 20px rgba(68,68,187,0.15)',
-      }
+      ...styles.card,
+      border: '1px solid #4444aa',
+      borderLeft: '3px solid #6666dd',
+      background: 'linear-gradient(135deg, rgba(30,30,80,0.6), rgba(8,8,20,0.6))',
+      boxShadow: '0 0 20px rgba(68,68,187,0.15)',
+    }
     : styles.card
 
   return (
@@ -157,11 +157,14 @@ export default function ProjectCard({ projet, onInfoClick }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: 22,
+          fontFamily: 'JetBrains Mono, monospace',
+          fontWeight: 700,
+          fontSize: 18,
+          color: niveau.color,
           flexShrink: 0,
         }}
       >
-        {projet.emoji}
+        {projet.niveau.charAt(0)}
       </div>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
@@ -235,7 +238,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
             color: '#4a4a6a',
           }}
         >
-          ⚖️ {projet.loi}
+          {projet.loi}
         </div>
       </div>
 
@@ -259,7 +262,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
               color: '#44dd88',
             }}
           >
-            💰 +{fmt(projet.revenuQuotidien)}$/j
+            +{fmt(projet.revenuQuotidien)} CHF/j
           </span>
           <span
             style={{
@@ -269,10 +272,10 @@ export default function ProjectCard({ projet, onInfoClick }) {
               color: RISK_COLOR(projet.risqueQuotidien),
             }}
           >
-            ⚖️ +{projet.risqueQuotidien}%/j
+            +{projet.risqueQuotidien}% risque/j
           </span>
           <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#5a5a7a' }}>
-            🏷️ {projet.coutAchat === 0 ? 'Gratuit' : `${fmt(projet.coutAchat)}$`}
+            {projet.coutAchat === 0 ? 'Gratuit' : `${fmt(projet.coutAchat)} CHF`}
           </span>
         </div>
 

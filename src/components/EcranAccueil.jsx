@@ -17,7 +17,7 @@ export default function EcranAccueil() {
         window._gameAudioCtx = new (window.AudioContext || window.webkitAudioContext)()
       }
       window._gameAudioCtx.resume()
-    } catch (err) {}
+    } catch (err) { }
     sounds.playLogin()
     setNomJoueur(nom.trim())
     setStatutJeu('boot')
@@ -50,7 +50,7 @@ export default function EcranAccueil() {
 
         <div style={{ marginTop: 20 }}>
           <div style={styles.formLabel}>ACCÈS DIRECTION</div>
-          <div style={styles.formSubtitle}>Portail PDG — Confidentiel</div>
+          <div style={styles.formSubtitle}>Portail PDG - Confidentiel</div>
         </div>
 
         <form onSubmit={handleSubmit} style={{ marginTop: 24 }}>
@@ -89,13 +89,13 @@ export default function EcranAccueil() {
               e.currentTarget.style.color = '#aaaaee'
             }}
           >
-            SE CONNECTER →
+            SE CONNECTER
           </button>
         </form>
 
         <div style={styles.divider} />
 
-        <div style={styles.footer}>© 2026 DataMax Corp</div>
+        <div style={styles.footer}>DataMax Corp</div>
         <div style={styles.footer}>Accès non autorisé formellement interdit.</div>
       </div>
     </div>

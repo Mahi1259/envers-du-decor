@@ -5,15 +5,15 @@ import { useSounds } from '../hooks/useSounds'
 const SEP = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 
 const LINES = [
-  { text: '  Initialisation du profil exécutif.............. ✓', color: '#00ff41', delay: 200 },
-  { text: '  Chargement du tableau de bord revenus........... ✓', color: '#00ff41', delay: 250 },
-  { text: '  Connexion aux serveurs de données............... ✓', color: '#00ff41', delay: 250 },
-  { text: '  Montage du moteur analytique.................... ✓', color: '#00ff41', delay: 250 },
-  { text: '  Contournement des filtres de conformité......... ✓', color: '#ffaa33', delay: 300 },
-  { text: '  Désactivation des alertes RGPD.................. ✓', color: '#ffaa33', delay: 300 },
-  { text: '  Chargement base de données joueurs (4,2M)....... ✓', color: '#ff4455', delay: 350 },
-  { text: '  Accès aux données personnelles accordé.......... ✓', color: '#ff4455', delay: 300 },
-  { text: '  Initialisation des protocoles de monétisation... ✓', color: '#ff4455', delay: 300 },
+  { text: '  Initialisation du profil exécutif.............. ', color: '#00ff41', delay: 200 },
+  { text: '  Chargement du tableau de bord revenus........... ', color: '#00ff41', delay: 250 },
+  { text: '  Connexion aux serveurs de données............... ', color: '#00ff41', delay: 250 },
+  { text: '  Montage du moteur analytique.................... ', color: '#00ff41', delay: 250 },
+  { text: '  Contournement des filtres de conformité......... ', color: '#ffaa33', delay: 300 },
+  { text: '  Désactivation des alertes RGPD.................. ', color: '#ffaa33', delay: 300 },
+  { text: '  Chargement base de données joueurs (4,2M)....... ', color: '#ff4455', delay: 350 },
+  { text: '  Accès aux données personnelles accordé.......... ', color: '#ff4455', delay: 300 },
+  { text: '  Initialisation des protocoles de monétisation... ', color: '#ff4455', delay: 300 },
 ]
 
 const TYPE_SPEED = 4
@@ -95,9 +95,6 @@ export default function EcranBoot() {
         <div style={styles.sep}>{SEP}</div>
         <div style={{ ...styles.header, animation: 'terminalGlow 2s infinite' }}>
           {'  DATAMAX DIVERTISSEMENT — Système d\'exploitation v2.1'}
-        </div>
-        <div style={{ ...styles.header, animation: 'terminalGlow 2s infinite' }}>
-          {'  Copyright © 2026 DataMax Corp. Tous droits réservés.'}
         </div>
         <div style={styles.sep}>{SEP}</div>
         <div style={{ height: 16 }} />

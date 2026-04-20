@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useGame } from '../context/GameContext'
 import { useSounds } from '../hooks/useSounds'
+import RapportFinal from './RapportFinal'
 
 function fmt(n) {
   return new Intl.NumberFormat('fr-CH').format(n)
@@ -16,6 +17,7 @@ const DATE_FR = new Date().toLocaleDateString('fr-CH', {
 export default function EcranFinJournal({ statut }) {
   const { nomJoueur, compteEnBanque, risqueLegal, reset } = useGame()
   const sounds = useSounds()
+  const [showRapport, setShowRapport] = useState(false)
   const isGameOver = statut === 'game_over'
 
   useEffect(() => {
@@ -31,11 +33,11 @@ export default function EcranFinJournal({ statut }) {
   const headlineColor = isGameOver ? '#8a0000' : '#1a4a1a'
   const headlineText = isGameOver
     ? `ARRESTATION : ${nomJoueur || 'Le PDG'} mis en examen par la CNIL`
-    : `SUCCÈS : ${nomJoueur || 'Le PDG'} réalise ${fmt(compteEnBanque)} $ en une semaine`
+    : `SUCCÈS : ${nomJoueur || 'Le PDG'} réalise ${fmt(compteEnBanque)} CHF en une semaine`
 
   const subhead = isGameOver
     ? "Le PDG de DataMax Divertissement visé par une enquête pour violation massive du RGPD"
-    : "Le directeur de DataMax Divertissement réalise une semaine record — mais à quel prix ?"
+    : "Le directeur de DataMax Divertissement réalise une semaine record - mais à quel prix ?"
 
   const article = isGameOver
     ? "L'entreprise DataMax Divertissement a été placée en garde à vue ce vendredi. Les enquêteurs de la CNIL ont mis en lumière des pratiques illicites de collecte et de revente de données personnelles à grande échelle, touchant potentiellement des millions de joueurs."
@@ -58,7 +60,7 @@ export default function EcranFinJournal({ statut }) {
         <div style={styles.mastheadTop} />
         <div style={styles.mastheadName}>LA GAZETTE DU NUMÉRIQUE</div>
         <div style={styles.mastheadDivider} />
-        <div style={styles.mastheadDate}>Édition Spéciale — {DATE_FR}</div>
+        <div style={styles.mastheadDate}>Édition Spéciale - {DATE_FR}</div>
         <div style={styles.mastheadDivider} />
 
         <h1 style={{ ...styles.headline, color: headlineColor }}>{headlineText}</h1>
@@ -77,7 +79,7 @@ export default function EcranFinJournal({ statut }) {
                 borderLeft: `3px solid ${headlineColor}`,
               }}
             >
-              <div style={styles.legalTitle}>⚖️ CE QUE DIT LA LOI</div>
+              <div style={styles.legalTitle}>CE QUE DIT LA LOI</div>
               <p style={styles.legalBody}>{legalText}</p>
             </div>
           </div>
@@ -86,26 +88,33 @@ export default function EcranFinJournal({ statut }) {
         <div style={styles.bilan}>
           <div style={styles.bilanLabel}>BILAN DE LA SEMAINE</div>
           <div style={{ ...styles.bilanValue, color: headlineColor }}>
-            ${fmt(compteEnBanque)}
+            {fmt(compteEnBanque)} CHF
           </div>
           <div style={styles.bilanRisk}>Risque légal final : {risqueLegal}%</div>
         </div>
       </div>
 
-      <button
-        onClick={reset}
-        style={styles.replay}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = '#4444aa'
-          e.currentTarget.style.color = '#8888cc'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = '#2a2a4a'
-          e.currentTarget.style.color = '#5a5a7a'
-        }}
-      >
-        ↩ Nouvelle Partie
-      </button>
+      <div style={styles.buttonRow}>
+        <button style={styles.rapportBtn} onClick={() => setShowRapport(true)}>
+          Voir le rapport CNIL
+        </button>
+        <button
+          onClick={reset}
+          style={styles.replay}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = '#4444aa'
+            e.currentTarget.style.color = '#8888cc'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = '#2a2a4a'
+            e.currentTarget.style.color = '#5a5a7a'
+          }}
+        >
+          ↩ Nouvelle Partie
+        </button>
+      </div>
+
+      {showRapport && <RapportFinal onClose={() => setShowRapport(false)} />}
     </div>
   )
 }
@@ -230,7 +239,6 @@ const styles = {
     marginTop: 4,
   },
   replay: {
-    marginTop: 32,
     background: 'transparent',
     border: '1px solid #2a2a4a',
     color: '#5a5a7a',
@@ -239,5 +247,25 @@ const styles = {
     padding: '12px 32px',
     borderRadius: 4,
     transition: 'all 0.2s ease',
+    cursor: 'pointer',
+  },
+  buttonRow: {
+    marginTop: 32,
+    display: 'flex',
+    gap: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  rapportBtn: {
+    background: 'rgba(180,0,20,0.15)',
+    border: '1px solid #660010',
+    color: '#ff6655',
+    padding: '12px 32px',
+    borderRadius: 4,
+    fontFamily: 'Inter, sans-serif',
+    fontSize: 12,
+    cursor: 'pointer',
+    letterSpacing: '0.1em',
   },
 }

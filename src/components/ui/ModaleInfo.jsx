@@ -1,29 +1,37 @@
+import { useEffect } from 'react'
+import CloseButton from './CloseButton'
+
 export default function ModaleInfo({ projet, onClose }) {
-  const { info, titre, emoji } = projet
+  const { info, titre } = projet
+
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
 
   return (
     <div style={styles.overlay}>
-      <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
+      <div style={styles.modal}>
         <div style={styles.header}>
           <div style={styles.headerLeft}>
-            <span style={styles.emoji}>{emoji}</span>
             <span style={styles.headerTitle}>{titre}</span>
           </div>
-          <button style={styles.closeBtn} onClick={onClose}>
-            ✕
-          </button>
+          <CloseButton onClick={onClose} />
         </div>
 
         <div style={styles.body}>
           <div style={styles.section}>
-            <div style={styles.sectionLabel}>📖 EXPLICATION</div>
+            <div style={styles.sectionLabel}>EXPLICATION</div>
             <div style={styles.explicationBox}>
               <p style={styles.explicationText}>{info.explication}</p>
             </div>
           </div>
 
           <div style={styles.section}>
-            <div style={{ ...styles.sectionLabel, color: '#ffaa33' }}>⚖️ CAS RÉELS</div>
+            <div style={{ ...styles.sectionLabel, color: '#ffaa33' }}>CAS RÉELS</div>
             <div style={styles.exemplesBox}>
               {info.exemples.map((ex, i) => (
                 <div key={i} style={styles.exempleRow}>
@@ -35,7 +43,7 @@ export default function ModaleInfo({ projet, onClose }) {
           </div>
 
           <div style={styles.section}>
-            <div style={{ ...styles.sectionLabel, color: '#ff4455' }}>🚨 CONSÉQUENCE LÉGALE</div>
+            <div style={{ ...styles.sectionLabel, color: '#ff4455' }}>CONSÉQUENCE LÉGALE</div>
             <div style={styles.consequenceBox}>
               <p style={styles.consequenceText}>{info.consequence}</p>
             </div>
@@ -89,7 +97,6 @@ const styles = {
     flexShrink: 0,
   },
   headerLeft: { display: 'flex', alignItems: 'center', gap: 10 },
-  emoji: { fontSize: 22 },
   headerTitle: {
     fontFamily: 'Inter, sans-serif',
     fontWeight: 600,

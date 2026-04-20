@@ -10,7 +10,7 @@ export default function EcranIntro() {
 
   useEffect(() => {
     if (!started) return
-    const timer = setTimeout(() => setShowSkip(true), 3000)
+    const timer = setTimeout(() => setShowSkip(true), 2000)
     return () => clearTimeout(timer)
   }, [started])
 
@@ -21,7 +21,7 @@ export default function EcranIntro() {
       if (!v) return
       v.muted = false
       v.volume = 1
-      v.play().catch(() => {})
+      v.play().catch(() => { })
     })
   }
 
@@ -169,7 +169,7 @@ export default function EcranIntro() {
               cursor: 'pointer',
             }}
           >
-            ▶  Cliquer pour commencer
+            Cliquer pour commencer
           </button>
         </div>
       )}
@@ -179,24 +179,36 @@ export default function EcranIntro() {
           onClick={goToNext}
           style={{
             position: 'absolute',
-            bottom: 24,
-            right: 24,
-            background: 'rgba(0,0,0,0.6)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            color: 'rgba(255,255,255,0.6)',
-            padding: '10px 24px',
-            borderRadius: 4,
+            bottom: 32,
+            right: 32,
+            background: 'rgba(13,13,26,0.85)',
+            border: '1px solid #3a3a6a',
+            color: '#aaaacc',
+            padding: '12px 28px',
+            borderRadius: 6,
             fontFamily: 'Inter, sans-serif',
-            fontSize: 12,
+            fontWeight: 500,
+            fontSize: 13,
             cursor: 'pointer',
             zIndex: 3,
-            letterSpacing: '0.1em',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
+            letterSpacing: '0.08em',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             transition: 'all 0.2s ease',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(30,30,60,0.95)'
+            e.currentTarget.style.borderColor = '#6666dd'
+            e.currentTarget.style.color = '#e8e8f5'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(13,13,26,0.85)'
+            e.currentTarget.style.borderColor = '#3a3a6a'
+            e.currentTarget.style.color = '#aaaacc'
           }}
         >
-          Passer l'intro →
+          Passer l'intro
         </button>
       )}
     </div>

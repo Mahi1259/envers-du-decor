@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useGame } from '../context/GameContext'
 import { useGameEngine } from '../hooks/useGameEngine'
 import ProjectCard from './ui/ProjectCard'
 import ModaleInfo from './ui/ModaleInfo'
+import CloseButton from './ui/CloseButton'
 
 function fmt(n) {
   return new Intl.NumberFormat('fr-CH').format(n)
@@ -13,28 +14,23 @@ export default function FenetreBusinessManager({ onClose }) {
   const { projets } = useGameEngine()
   const [infoProjet, setInfoProjet] = useState(null)
 
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onClose])
+
   return (
     <div style={styles.overlay}>
       <div style={styles.window} onClick={(e) => e.stopPropagation()}>
         <div style={styles.titleBar}>
-          <div style={styles.title}>Boss Manager — Gestion des Projets</div>
+          <div style={styles.title}>Boss Manager - Gestion des Projets ({projets.length} projets disponibles)</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={styles.titleBalance}>${fmt(compteEnBanque)}</div>
-            <button
-              onClick={onClose}
-              style={styles.closeX}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#e8e8f5')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#5a5a7a')}
-              aria-label="Fermer"
-            >
-              ×
-            </button>
+            <div style={styles.titleBalance}>Budget disponible: {fmt(compteEnBanque)} CHF</div>
+            <CloseButton onClick={onClose} />
           </div>
-        </div>
-
-        <div style={styles.toolbar}>
-          <span style={styles.toolbarLeft}>{projets.length} projets disponibles</span>
-          <span style={styles.toolbarRight}>Budget disponible: ${fmt(compteEnBanque)}</span>
         </div>
 
         <div style={styles.list}>
