@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { Briefcase, Calendar as CalIcon, Trash2 } from 'lucide-react'
+import { Briefcase, Calendar as CalIcon, Mail, Trash2 } from 'lucide-react'
 import { useGame } from '../context/GameContext'
 import { useGameEngine } from '../hooks/useGameEngine'
 import { useSounds } from '../hooks/useSounds'
 import FenetreBusinessManager from './FenetreBusinessManager'
+import FenetreMail from './FenetreMail'
 import TutorialOverlay from './TutorialOverlay'
 
 const TUTORIAL_STEPS = [
@@ -53,6 +54,14 @@ const TUTORIAL_STEPS = [
     description:
       'Quand vous avez fini de configurer vos projets, cliquez sur le calendrier pour terminer la journée. Le jeu calculera vos gains, votre risque, et passera au jour suivant.',
     highlight: 'icon-calendrier',
+    position: 'right',
+  },
+  {
+    id: 'mail',
+    titre: 'Boîte Mail',
+    description:
+      "Chaque nuit, vos activités illégales peuvent attirer des hackers. Plus vous avez de projets actifs, plus vous êtes vulnérable. Le lendemain matin, un badge rouge apparaît sur cette icône : votre argent a déjà été débité. Cliquez pour lire ce qui s'est passé.",
+    highlight: 'icon-mail',
     position: 'right',
   },
   {
@@ -125,11 +134,18 @@ export default function BureauOS() {
     tutorialStep,
     setTutorialActive,
     setTutorialStep,
+    inbox,
+    mailsLus,
+    setNouveauMail,
   } = useGame()
   const { handleNextDay } = useGameEngine()
   const sounds = useSounds()
   const [windowOpen, setWindowOpen] = useState(false)
+  const [mailOpen, setMailOpen] = useState(false)
   const [confirmQuit, setConfirmQuit] = useState(false)
+  const unreadCount = inbox.filter(
+    (m) => !mailsLus.includes(m.instanceId ?? m.id)
+  ).length
   const [moneyAnim, setMoneyAnim] = useState(false)
   const [notifications, setNotifications] = useState([])
   const [shownNotifs, setShownNotifs] = useState(new Set())
@@ -187,9 +203,6 @@ export default function BureauOS() {
         const uid = config.id + '_' + Date.now()
         const newNotif = { ...config, id: uid }
         setNotifications((prev) => [...prev, newNotif])
-        setTimeout(() => {
-          setNotifications((prev) => prev.filter((n) => n.id !== uid))
-        }, 6000)
       }
     })
   }, [risqueLegal, shownNotifs])
@@ -323,6 +336,56 @@ export default function BureauOS() {
             />
           </div>
 
+          <div id="icon-mail" style={{ position: 'relative' }}>
+            <DesktopIcon
+              label="Mails"
+              iconBg={
+                unreadCount > 0
+                  ? 'linear-gradient(135deg, #aa2233, #661122)'
+                  : 'linear-gradient(135deg, #3a3a6a, #2a2a4a)'
+              }
+              iconBorder={unreadCount > 0 ? '#cc4455' : '#5555aa'}
+              iconColor="#e8e8f5"
+              Icon={Mail}
+              hoverShadow={
+                unreadCount > 0
+                  ? '0 0 16px rgba(255,68,85,0.4)'
+                  : '0 0 16px rgba(102,102,221,0.35)'
+              }
+              labelColor={unreadCount > 0 ? '#ff6677' : '#b0b0cc'}
+              onClick={() => {
+                setMailOpen(true)
+                setNouveauMail(false)
+              }}
+            />
+            {unreadCount > 0 && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 2,
+                  right: 12,
+                  minWidth: 20,
+                  height: 20,
+                  padding: '0 6px',
+                  background: '#ff4455',
+                  borderRadius: 10,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  border: '2px solid #0a0a14',
+                  fontFamily: 'Inter, sans-serif',
+                  boxShadow: '0 0 8px rgba(255,68,85,0.5)',
+                  pointerEvents: 'none',
+                }}
+              >
+                {unreadCount}
+              </div>
+            )}
+          </div>
+
           <div id="icon-corbeille" style={{ position: 'relative' }}>
             <DesktopIcon
               label="Abandonner"
@@ -344,6 +407,8 @@ export default function BureauOS() {
       </div>
 
       {windowOpen && <FenetreBusinessManager onClose={() => setWindowOpen(false)} />}
+
+      {mailOpen && <FenetreMail onClose={() => setMailOpen(false)} />}
 
       {confirmQuit && (
         <div style={styles.modalOverlay}>
@@ -398,12 +463,12 @@ function NotificationContainer({ notifications, onDismiss }) {
       style={{
         position: 'fixed',
         top: 48,
-        right: 24,
+        right: 20,
         zIndex: 500,
         display: 'flex',
         flexDirection: 'column',
-        gap: 12,
-        maxWidth: 360,
+        gap: 8,
+        maxWidth: 280,
       }}
     >
       {notifications.map((notif) => (
@@ -432,24 +497,24 @@ function NotifCard({ notif, onDismiss }) {
         animation: 'slideInRight 0.3s ease',
       }}
     >
-      <div style={{ height: 3, background: c.bar, width: '100%' }} />
+      <div style={{ height: 2, background: c.bar, width: '100%' }} />
 
-      <div style={{ padding: '14px 16px' }}>
+      <div style={{ padding: '10px 12px' }}>
         <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
-            marginBottom: 8,
+            marginBottom: 6,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <div>
               <div
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 700,
-                  fontSize: 10,
+                  fontSize: 8,
                   color: c.accent,
                   letterSpacing: '0.15em',
                 }}
@@ -460,7 +525,7 @@ function NotifCard({ notif, onDismiss }) {
                 style={{
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 600,
-                  fontSize: 12,
+                  fontSize: 11,
                   color: '#e8e8f5',
                   marginTop: 2,
                 }}
@@ -476,7 +541,7 @@ function NotifCard({ notif, onDismiss }) {
               border: 'none',
               color: '#4a4a6a',
               cursor: 'pointer',
-              fontSize: 14,
+              fontSize: 13,
               padding: '0 4px',
               lineHeight: 1,
             }}
@@ -489,7 +554,7 @@ function NotifCard({ notif, onDismiss }) {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontWeight: 400,
-            fontSize: 12,
+            fontSize: 10.5,
             color: '#9a9aaa',
             lineHeight: 1.6,
             margin: 0,
@@ -500,9 +565,9 @@ function NotifCard({ notif, onDismiss }) {
 
         <div
           style={{
-            marginTop: 10,
+            marginTop: 7,
             fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 10,
+            fontSize: 8.5,
             color: '#3a3a5a',
             display: 'flex',
             justifyContent: 'space-between',

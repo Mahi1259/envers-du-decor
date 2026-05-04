@@ -94,7 +94,7 @@ export default function EcranBoot() {
       <div style={styles.content}>
         <div style={styles.sep}>{SEP}</div>
         <div style={{ ...styles.header, animation: 'terminalGlow 2s infinite' }}>
-          {'  DATAMAX DIVERTISSEMENT — Système d\'exploitation v2.1'}
+          {'  DATAMAX DIVERTISSEMENT - Système d\'exploitation v2.1'}
         </div>
         <div style={styles.sep}>{SEP}</div>
         <div style={{ height: 16 }} />

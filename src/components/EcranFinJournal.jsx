@@ -15,7 +15,7 @@ const DATE_FR = new Date().toLocaleDateString('fr-CH', {
 })
 
 export default function EcranFinJournal({ statut }) {
-  const { nomJoueur, compteEnBanque, risqueLegal, reset } = useGame()
+  const { nomJoueur, compteEnBanque, risqueLegal, reset, quitter } = useGame()
   const sounds = useSounds()
   const [showRapport, setShowRapport] = useState(false)
   const isGameOver = statut === 'game_over'
@@ -110,7 +110,21 @@ export default function EcranFinJournal({ statut }) {
             e.currentTarget.style.color = '#5a5a7a'
           }}
         >
-          ↩ Nouvelle Partie
+          ↩ Rejouer
+        </button>
+        <button
+          onClick={quitter}
+          style={styles.quit}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = '#aa4444'
+            e.currentTarget.style.color = '#cc8888'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = '#4a2a2a'
+            e.currentTarget.style.color = '#7a5a5a'
+          }}
+        >
+          Quitter
         </button>
       </div>
 
@@ -242,6 +256,17 @@ const styles = {
     background: 'transparent',
     border: '1px solid #2a2a4a',
     color: '#5a5a7a',
+    fontSize: 12,
+    letterSpacing: '0.1em',
+    padding: '12px 32px',
+    borderRadius: 4,
+    transition: 'all 0.2s ease',
+    cursor: 'pointer',
+  },
+  quit: {
+    background: 'transparent',
+    border: '1px solid #4a2a2a',
+    color: '#7a5a5a',
     fontSize: 12,
     letterSpacing: '0.1em',
     padding: '12px 32px',

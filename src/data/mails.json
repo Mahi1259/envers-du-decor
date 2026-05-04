@@ -1,0 +1,101 @@
+[
+  {
+    "id": "intro_sous_traitance",
+    "expediteur": "Département Juridique",
+    "objet": "Note d'information : Sous-traitance Cloud (Art. 9 LPD)",
+    "contenu": "Bienvenue au poste de Directeur. Petit rappel légal : nous utilisons des serveurs Cloud externes pour le jeu. Nous sommes le 'Responsable du traitement' et notre hébergeur est notre 'Sous-traitant'. Leur marge de manœuvre doit être nulle. Comme nos serveurs sont aux États-Unis (pays non adéquat), n'oubliez pas que sans cryptage robuste, nous risquons une amende pénale allant jusqu'à 250'000 CHF si l'Art. 9 de la LPD n'est pas respecté. Bon travail.",
+    "perteArgent": 0,
+    "malusRisque": 0,
+    "projetLie": null
+  },
+  {
+    "id": "faille_sous_sous_traitant",
+    "expediteur": "Audit de Sécurité",
+    "objet": "Alerte : Faille chez un sous-traitant de 2ème degré",
+    "contenu": "Catastrophe. Notre hébergeur Cloud a sous-traité une partie de son stockage à un tiers sans nous demander notre autorisation préalable, ce qui viole l'Art. 9 al. 3 de la LPD. Ce sous-sous-traitant a subi une fuite massive. L'obligation de sécurité n'a pas été garantie, et nous sommes tenus responsables devant le Préposé fédéral.",
+    "perteArgent": 15000,
+    "malusRisque": 20,
+    "projetLie": "sdk_tiers"
+  },
+  {
+    "id": "us_cloud_act",
+    "expediteur": "Directeur Technique (CTO)",
+    "objet": "Saisie de données : US Cloud Act",
+    "contenu": "Les autorités américaines ont utilisé le 'US Cloud Act' pour exiger l'accès aux données de nos joueurs stockées sur les serveurs de notre prestataire américain. Pire encore : notre équipe n'avait pas conservé la clé de cryptage en Suisse. Les données ont donc pu être lues en clair. C'est une violation grave de la protection à l'étranger.",
+    "perteArgent": 25000,
+    "malusRisque": 30,
+    "projetLie": "kernel_anticheat"
+  },
+  {
+    "id": "marge_manoeuvre_ia",
+    "expediteur": "Service Juridique",
+    "objet": "Requalification en co-responsable",
+    "contenu": "Notre prestataire d'analyse de données s'est permis de réutiliser les profils de nos joueurs pour entraîner sa propre Intelligence Artificielle. Sa marge de manœuvre n'étant plus nulle, il n'est plus un simple 'sous-traitant' mais devient 'co-responsable'. Une plainte vient d'être déposée contre nous deux pour détournement de finalité.",
+    "perteArgent": 12000,
+    "malusRisque": 15,
+    "projetLie": "entrainement_ia"
+  },
+  {
+    "id": "rgpd_extraterritorial",
+    "expediteur": "Avocat Conseil",
+    "objet": "Amende européenne (Effet extraterritorial)",
+    "contenu": "Une faille de sécurité chez notre prestataire de paiement a compromis les données de nos joueurs français et allemands. Comme nous ciblons le marché de l'UE, nous sommes soumis à l'effet extraterritorial du RGPD. Nous n'avions pas imposé le respect de l'Art. 28 RGPD dans le contrat de notre sous-traitant. La CNIL nous sanctionne lourdement.",
+    "perteArgent": 30000,
+    "malusRisque": 25,
+    "projetLie": "data_brokers"
+  },
+  {
+    "id": "pseudonymisation_echec",
+    "expediteur": "Équipe Data",
+    "objet": "Ré-identification de la base de données",
+    "contenu": "Nous pensions avoir anonymisé les données confiées à notre partenaire publicitaire, mais il s'agissait en réalité d'une simple pseudonymisation faible. En croisant nos logs avec d'autres bases de données, des milliers de joueurs ont été formellement identifiés. L'exigence de sécurité de la LPD a été bafouée.",
+    "perteArgent": 18000,
+    "malusRisque": 10,
+    "projetLie": "collecte_massive"
+  },
+  {
+    "id": "ransomware_1",
+    "expediteur": "Chief Technology Officer (CTO)",
+    "objet": "URGENT : Serveurs bloqués (Ransomware)",
+    "contenu": "C'est une catastrophe. Un ransomware a chiffré notre base de données principale cette nuit. Nos sauvegardes étaient sur le même réseau et sont compromises. Nous avons dû payer la rançon en crypto ce matin pour relancer le jeu.",
+    "perteArgent": 25000,
+    "malusRisque": 0,
+    "projetLie": "kernel_anticheat"
+  },
+  {
+    "id": "fuite_broker",
+    "expediteur": "Département Juridique",
+    "objet": "Alerte : Scandale sur les forums",
+    "contenu": "La technique de pseudonymisation (Joueur #84729) a échoué. Un hacker a croisé nos données revendues avec des adresses IP divulguées. Des milliers de joueurs ont été publiquement ré-identifiés. L'autorité de protection des données ouvre une enquête.",
+    "perteArgent": 10000,
+    "malusRisque": 20,
+    "projetLie": "data_brokers"
+  },
+  {
+    "id": "faille_sdk",
+    "expediteur": "Chef de Projet Mobile",
+    "objet": "Faille critique dans un SDK tiers",
+    "contenu": "L'un des SDK publicitaires que nous avons intégrés en secret transmettait des données GPS à un serveur non sécurisé. La faille a été exploitée. Nous devons payer une équipe d'urgence pour corriger le jeu et supprimer ce SDK.",
+    "perteArgent": 15000,
+    "malusRisque": 10,
+    "projetLie": "sdk_tiers"
+  },
+  {
+    "id": "bad_buzz_ia",
+    "expediteur": "Directeur Communication (PR)",
+    "objet": "Crise PR : Enregistrements vocaux découverts",
+    "contenu": "Un data miner a découvert dans notre code que nous enregistrions les conversations vocales pour entraîner notre IA. Twitter s'embrase, les joueurs suppriment leurs comptes en masse. Nous devons lancer une campagne de communication d'urgence très coûteuse pour calmer la situation.",
+    "perteArgent": 20000,
+    "malusRisque": 15,
+    "projetLie": "entrainement_ia"
+  },
+  {
+    "id": "phishing_admin",
+    "expediteur": "Service Sécurité",
+    "objet": "Incident de phishing interne",
+    "contenu": "Un stagiaire avec accès admin a cliqué sur un faux email ce matin. Son mot de passe a été volé. Le temps de bloquer l'accès, des milliers de profils utilisateurs ont été aspirés. Les frais d'audit de sécurité vont nous coûter cher.",
+    "perteArgent": 8000,
+    "malusRisque": 5,
+    "projetLie": "collecte_massive"
+  }
+]

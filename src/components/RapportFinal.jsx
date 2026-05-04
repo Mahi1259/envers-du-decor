@@ -28,7 +28,7 @@ export default function RapportFinal({ onClose }) {
             <div>
               <div style={styles.headerTitle}>RAPPORT D'INFRACTION OFFICIEL</div>
               <div style={styles.headerSub}>
-                Affaire DataMax Divertissement — PDG : {nomJoueur}
+                Affaire DataMax Divertissement, PDG : {nomJoueur}
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function RapportFinal({ onClose }) {
           <div style={styles.eduTitle}>CE QUE DIT LA LOI</div>
           <p style={styles.eduText}>
             Le RGPD (Art. 83) prévoit des amendes jusqu'à 4% du chiffre d'affaires mondial
-            annuel ou 20 millions d'euros — le montant le plus élevé étant retenu. En Suisse,
+            annuel ou 20 millions d'euros, le montant le plus élevé étant retenu. En Suisse,
             la LPD prévoit des sanctions pénales pouvant atteindre 250 000 CHF avec poursuites
             personnelles contre le dirigeant.
           </p>
