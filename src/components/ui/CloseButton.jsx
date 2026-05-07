@@ -1,21 +1,22 @@
 import { useState } from 'react'
 
-export default function CloseButton({ onClick }) {
+export default function CloseButton({ onClick, size = 32 }) {
   const [hovered, setHovered] = useState(false)
+  const fontSize = Math.round(size * 0.75)
   return (
     <button
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: 32,
-        height: 32,
+        width: size,
+        height: size,
         borderRadius: 0,
         background: 'transparent',
         border: 'none',
         padding: 0,
         color: hovered ? '#ff6677' : '#ff4455',
-        fontSize: 24,
+        fontSize,
         fontWeight: 700,
         cursor: 'pointer',
         display: 'flex',

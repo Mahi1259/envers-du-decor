@@ -39,7 +39,7 @@
     "id": "rgpd_extraterritorial",
     "expediteur": "Avocat Conseil",
     "objet": "Amende européenne (Effet extraterritorial)",
-    "contenu": "Une faille de sécurité chez notre prestataire de paiement a compromis les données de nos joueurs français et allemands. Comme nous ciblons le marché de l'UE, nous sommes soumis à l'effet extraterritorial du RGPD. Nous n'avions pas imposé le respect de l'Art. 28 RGPD dans le contrat de notre sous-traitant. La CNIL nous sanctionne lourdement.",
+    "contenu": "Une faille de sécurité chez notre prestataire de paiement a compromis les données de nos joueurs français et allemands. Comme nous ciblons le marché de l'UE, nous sommes soumis à l'effet extraterritorial du RGPD. Nous n'avions pas imposé le respect de l'Art. 28 RGPD dans le contrat de notre sous-traitant. Le PFPDT nous sanctionne lourdement.",
     "perteArgent": 30000,
     "malusRisque": 25,
     "projetLie": "data_brokers"

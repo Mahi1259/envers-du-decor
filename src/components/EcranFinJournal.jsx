@@ -32,7 +32,7 @@ export default function EcranFinJournal({ statut }) {
 
   const headlineColor = isGameOver ? '#8a0000' : '#1a4a1a'
   const headlineText = isGameOver
-    ? `ARRESTATION : ${nomJoueur || 'Le PDG'} mis en examen par la CNIL`
+    ? `ARRESTATION : ${nomJoueur || 'Le PDG'} mis en examen par le PFPDT`
     : `SUCCÈS : ${nomJoueur || 'Le PDG'} réalise ${fmt(compteEnBanque)} CHF en une semaine`
 
   const subhead = isGameOver
@@ -40,7 +40,7 @@ export default function EcranFinJournal({ statut }) {
     : "Le directeur de DataMax Divertissement réalise une semaine record - mais à quel prix ?"
 
   const article = isGameOver
-    ? "L'entreprise DataMax Divertissement a été placée en garde à vue ce vendredi. Les enquêteurs de la CNIL ont mis en lumière des pratiques illicites de collecte et de revente de données personnelles à grande échelle, touchant potentiellement des millions de joueurs."
+    ? "L'entreprise DataMax Divertissement a été placée en garde à vue ce vendredi. Les enquêteurs du PFPDT ont mis en lumière des pratiques illicites de collecte et de revente de données personnelles à grande échelle, touchant potentiellement des millions de joueurs."
     : "DataMax Divertissement clôture une semaine exceptionnelle sur le plan financier. Cependant, des voix s'élèvent parmi les associations de défense des données personnelles, qui réclament une transparence accrue sur les méthodes utilisées."
 
   const legalText = isGameOver
@@ -96,7 +96,7 @@ export default function EcranFinJournal({ statut }) {
 
       <div style={styles.buttonRow}>
         <button style={styles.rapportBtn} onClick={() => setShowRapport(true)}>
-          Voir le rapport CNIL
+          Voir le rapport PFPDT
         </button>
         <button
           onClick={reset}

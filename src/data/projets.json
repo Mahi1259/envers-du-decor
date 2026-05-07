@@ -15,7 +15,7 @@
       "titre": "Les Dark Patterns : Manipulation par le Design",
       "explication": "Un dark pattern est une interface délibérément conçue pour tromper l'utilisateur. Dans le domaine du consentement aux données, cela consiste à rendre le bouton 'Accepter tout' immense et coloré, tandis que le refus est caché dans des sous-menus complexes. Le consentement obtenu de cette manière n'est pas légalement valide selon le RGPD, qui exige un consentement libre, éclairé et explicite.",
       "exemples": [
-        "Google condamné à 150 millions € par la CNIL en 2022 pour cookies non refusables facilement.",
+        "Google condamné à 150 millions € par le PFPDT en 2022 pour cookies non refusables facilement.",
         "Facebook sanctionné par l'autorité irlandaise pour dark patterns dans ses paramètres de confidentialité.",
         "Amazon condamné à 746 millions € pour pratiques similaires en 2021."
       ],
@@ -38,7 +38,7 @@
       "titre": "La Minimisation des Données : Collecter Seulement le Nécessaire",
       "explication": "Le principe de minimisation des données (Art. 5 RGPD) impose de ne collecter que les données strictement nécessaires à la finalité déclarée. Exiger le nom complet, l'adresse et le téléphone pour jouer à un jeu vidéo viole ce principe fondamental. Les données personnelles inutiles représentent aussi un risque de sécurité supplémentaire en cas de piratage.",
       "exemples": [
-        "Fortnite (Epic Games) condamné à 275 millions $ par la FTC américaine pour collecte excessive de données d'enfants.",
+        "Fortnite (Epic Games) condamné à 275 millions CHF par la FTC américaine pour collecte excessive de données d'enfants.",
         "TikTok sanctionné à 345 millions € pour collecte de données de mineurs sans base légale valide.",
         "Activision poursuivi pour collecte non justifiée de données biométriques via ses jeux."
       ],

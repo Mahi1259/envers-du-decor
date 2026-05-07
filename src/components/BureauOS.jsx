@@ -6,13 +6,14 @@ import { useSounds } from '../hooks/useSounds'
 import FenetreBusinessManager from './FenetreBusinessManager'
 import FenetreMail from './FenetreMail'
 import TutorialOverlay from './TutorialOverlay'
+import CloseButton from './ui/CloseButton'
 
 const TUTORIAL_STEPS = [
   {
     id: 'welcome',
     titre: 'Bienvenue, PDG',
     description:
-      'Vous avez 5 jours (Lundi à Vendredi) pour maximiser vos profits sans vous faire arrêter par la CNIL. Voici comment fonctionne votre système.',
+      'Vous avez 5 jours (Lundi à Vendredi) pour maximiser vos profits sans vous faire arrêter par le PFPDT. Voici comment fonctionne votre système.',
     highlight: null,
     position: 'center',
   },
@@ -76,7 +77,7 @@ const TUTORIAL_STEPS = [
     id: 'strategie',
     titre: 'Votre Stratégie',
     description:
-      'Chaque jour le risque baisse naturellement de 10% si vous restez discret. Utilisez cela à votre avantage : activez beaucoup un jour, reposez-vous le lendemain. Survivez 5 jours et vous gagnez.',
+      'Chaque jour le risque baisse naturellement de 15% si vous restez discret. Utilisez cela à votre avantage : activez beaucoup un jour, reposez-vous le lendemain. Survivez 5 jours et vous gagnez.',
     highlight: null,
     position: 'center',
   },
@@ -176,7 +177,7 @@ export default function BureauOS() {
         threshold: 50,
         titre: 'SURVEILLANCE PRÉLIMINAIRE',
         message:
-          'La CNIL a ouvert une enquête préliminaire sur DataMax Divertissement. Des activités suspectes ont été détectées.',
+          'Le PFPDT a ouvert une enquête préliminaire sur DataMax Divertissement. Des activités suspectes ont été détectées.',
         niveau: 'warning',
       },
       {
@@ -184,7 +185,7 @@ export default function BureauOS() {
         threshold: 70,
         titre: 'ENQUÊTE ESCALADÉE',
         message:
-          'La CNIL a escaladé son enquête. Des inspecteurs ont été dépêchés. Une action immédiate est recommandée.',
+          'Le PFPDT a escaladé son enquête. Des inspecteurs ont été dépêchés. Une action immédiate est recommandée.',
         niveau: 'danger',
       },
       {
@@ -519,7 +520,7 @@ function NotifCard({ notif, onDismiss }) {
                   letterSpacing: '0.15em',
                 }}
               >
-                CNIL - ALERTE OFFICIELLE
+                PFPDT - ALERTE OFFICIELLE
               </div>
               <div
                 style={{
@@ -534,20 +535,7 @@ function NotifCard({ notif, onDismiss }) {
               </div>
             </div>
           </div>
-          <button
-            onClick={onDismiss}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#4a4a6a',
-              cursor: 'pointer',
-              fontSize: 13,
-              padding: '0 4px',
-              lineHeight: 1,
-            }}
-          >
-            ×
-          </button>
+          <CloseButton onClick={onDismiss} size={20} />
         </div>
 
         <p
@@ -573,7 +561,7 @@ function NotifCard({ notif, onDismiss }) {
             justifyContent: 'space-between',
           }}
         >
-          <span>Réf: CNIL-2026-{Math.floor(Math.random() * 9000) + 1000}</span>
+          <span>Réf: PFPDT-2026-{Math.floor(Math.random() * 9000) + 1000}</span>
           <span>Chiffré</span>
         </div>
       </div>

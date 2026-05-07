@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGame } from '../context/GameContext'
+import CloseButton from './ui/CloseButton'
 
 function fmt(n) {
   return new Intl.NumberFormat('fr-CH').format(n)
@@ -28,9 +29,7 @@ export default function FenetreMail({ onClose }) {
           <span style={styles.titleText}>
             Boîte de réception - DataMax OS
           </span>
-          <button style={styles.closeBtn} onClick={onClose}>
-            ×
-          </button>
+          <CloseButton onClick={onClose} size={28} />
         </div>
 
         <div style={styles.body}>
@@ -228,8 +227,9 @@ const styles = {
     border: '1px solid #2a2a4a',
     borderRadius: 10,
     width: '100%',
-    maxWidth: 780,
-    maxHeight: '85vh',
+    maxWidth: 920,
+    height: '75vh',
+    minHeight: 480,
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
@@ -250,24 +250,13 @@ const styles = {
     fontSize: 12,
     color: '#6a6a8a',
   },
-  closeBtn: {
-    background: 'none',
-    border: 'none',
-    color: '#5a5a7a',
-    fontSize: 22,
-    cursor: 'pointer',
-    padding: '0 4px',
-    fontFamily: 'Arial, sans-serif',
-    transition: 'color 0.15s',
-    lineHeight: 1,
-  },
   body: {
     display: 'flex',
     flex: 1,
     overflow: 'hidden',
   },
   listPanel: {
-    width: 240,
+    width: 280,
     borderRight: '1px solid #1a1a2e',
     display: 'flex',
     flexDirection: 'column',

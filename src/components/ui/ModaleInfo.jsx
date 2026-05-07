@@ -52,7 +52,7 @@ export default function ModaleInfo({ projet, onClose }) {
 
         <div style={styles.footer}>
           <span style={styles.footerText}>
-            Source: RGPD, LPD suisse, jurisprudence CNIL 2022–2026
+            Source: RGPD, LPD suisse, jurisprudence PFPDT 2022–2026
           </span>
         </div>
       </div>

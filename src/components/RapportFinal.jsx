@@ -24,7 +24,7 @@ export default function RapportFinal({ onClose }) {
       <div style={styles.container}>
         <div style={styles.header}>
           <div style={styles.headerLeft}>
-            <div style={styles.cnilBadge}>CNIL</div>
+            <div style={styles.pfpdtBadge}>PFPDT</div>
             <div>
               <div style={styles.headerTitle}>RAPPORT D'INFRACTION OFFICIEL</div>
               <div style={styles.headerSub}>
@@ -169,7 +169,7 @@ const styles = {
     alignItems: 'center',
     gap: 14,
   },
-  cnilBadge: {
+  pfpdtBadge: {
     background: 'rgba(200,0,30,0.15)',
     border: '1px solid #660010',
     borderRadius: 6,
