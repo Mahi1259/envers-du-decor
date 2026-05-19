@@ -95,7 +95,7 @@ function fmt(n) {
   return new Intl.NumberFormat('fr-CH').format(n)
 }
 
-const RISK_COLOR = (r) => (r >= 70 ? '#c46868' : r >= 40 ? '#b8876e' : '#95bc9c')
+const RISK_COLOR = (r) => (r >= 70 ? '#ff4455' : r >= 40 ? '#ffaa33' : '#44dd88')
 
 function getDesktopBackground(risk) {
   if (risk >= 70) {
@@ -267,7 +267,7 @@ export default function BureauOS() {
               key={moneyAnim ? 'a' : 'b'}
               style={{
                 ...styles.statValue,
-                color: '#95bc9c',
+                color: '#44dd88',
                 animation: moneyAnim ? 'moneyPop 0.6s ease' : 'none',
               }}
             >
@@ -310,11 +310,11 @@ export default function BureauOS() {
           <div id="icon-boss" style={{ position: 'relative' }}>
             <DesktopIcon
               label="Boss Manager"
-              iconBg="linear-gradient(135deg, #2a3040, #1a2030)"
-              iconBorder="#3d4555"
-              iconColor="#aabbd0"
+              iconBg="linear-gradient(135deg, #3a3aaa, #2a2a6a)"
+              iconBorder="#5555cc"
+              iconColor="#c0c0ff"
               Icon={Briefcase}
-              labelColor="#9aabbc"
+              labelColor="#b0b0cc"
               onClick={() => setWindowOpen(true)}
             />
           </div>
@@ -323,15 +323,16 @@ export default function BureauOS() {
             <DesktopIcon
               label={
                 <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-                  <span style={{ fontWeight: 700, fontSize: 12, color: '#95bc9c' }}>{jourCode}</span>
-                  <span style={{ fontWeight: 500, fontSize: 10, color: '#95bc9c' }}>Terminer</span>
+                  <span style={{ fontWeight: 700, fontSize: 12, color: '#66dd88' }}>{jourCode}</span>
+                  <span style={{ fontWeight: 500, fontSize: 10, color: '#66dd88' }}>Terminer</span>
                 </span>
               }
-              iconBg="linear-gradient(135deg, #243530, #162420)"
-              iconBorder="#3d4d3e"
-              iconColor="#95bc9c"
+              iconBg="linear-gradient(135deg, #3a6a3a, #2a4a2a)"
+              iconBorder="#55aa55"
+              iconColor="#b4ffb4"
               Icon={CalIcon}
-              labelColor="#95bc9c"
+              hoverShadow="0 0 16px rgba(68,221,136,0.35)"
+              labelColor="#66dd88"
               onClick={onEndDay}
             />
           </div>
@@ -341,13 +342,18 @@ export default function BureauOS() {
               label="Mails"
               iconBg={
                 unreadCount > 0
-                  ? 'linear-gradient(135deg, #382020, #221414)'
-                  : 'linear-gradient(135deg, #2a2d36, #1a1d26)'
+                  ? 'linear-gradient(135deg, #aa2233, #661122)'
+                  : 'linear-gradient(135deg, #3a3a6a, #2a2a4a)'
               }
-              iconBorder={unreadCount > 0 ? '#6a3a3a' : '#3a3d48'}
-              iconColor={unreadCount > 0 ? '#c89898' : '#aabbd0'}
+              iconBorder={unreadCount > 0 ? '#cc4455' : '#5555aa'}
+              iconColor="#e8e8f5"
               Icon={Mail}
-              labelColor={unreadCount > 0 ? '#c89090' : '#9aabbc'}
+              hoverShadow={
+                unreadCount > 0
+                  ? '0 0 16px rgba(255,68,85,0.4)'
+                  : '0 0 16px rgba(102,102,221,0.35)'
+              }
+              labelColor={unreadCount > 0 ? '#ff6677' : '#b0b0cc'}
               onClick={() => {
                 setMailOpen(true)
                 setNouveauMail(false)
@@ -362,7 +368,7 @@ export default function BureauOS() {
                   minWidth: 20,
                   height: 20,
                   padding: '0 6px',
-                  background: '#c46868',
+                  background: '#ff4455',
                   borderRadius: 10,
                   display: 'flex',
                   alignItems: 'center',
@@ -372,6 +378,7 @@ export default function BureauOS() {
                   color: '#ffffff',
                   border: '2px solid #0a0a14',
                   fontFamily: 'Inter, sans-serif',
+                  boxShadow: '0 0 8px rgba(255,68,85,0.5)',
                   pointerEvents: 'none',
                 }}
               >
@@ -383,11 +390,12 @@ export default function BureauOS() {
           <div id="icon-corbeille" style={{ position: 'relative' }}>
             <DesktopIcon
               label="Abandonner"
-              iconBg="linear-gradient(135deg, #382020, #221414)"
-              iconBorder="#6a3a3a"
-              iconColor="#c89898"
+              iconBg="linear-gradient(135deg, #6a3a3a, #4a2a2a)"
+              iconBorder="#aa5555"
+              iconColor="#ffb4b4"
               Icon={Trash2}
-              labelColor="#c89090"
+              hoverShadow="0 0 16px rgba(255,68,85,0.35)"
+              labelColor="#ff6677"
               onClick={() => setConfirmQuit(true)}
             />
           </div>
