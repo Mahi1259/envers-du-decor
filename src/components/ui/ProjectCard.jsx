@@ -2,20 +2,20 @@ import { useGame } from '../../context/GameContext'
 import { useSounds } from '../../hooks/useSounds'
 
 const NIVEAU_STYLES = {
-  FAIBLE: { bg: '#1a3a1a', color: '#44dd88', border: '#336633' },
-  MOYEN: { bg: '#3a2a1a', color: '#ffaa33', border: '#664422' },
-  ÉLEVÉ: { bg: '#3a1a1a', color: '#ff8844', border: '#663322' },
-  CRITIQUE: { bg: '#2a0a0a', color: '#ff4455', border: '#661122' },
+  FAIBLE: { bg: '#1f242c', color: '#8a9aae', border: '#343b46' },
+  MOYEN: { bg: '#241f18', color: '#b4a47e', border: '#3a3225' },
+  ÉLEVÉ: { bg: '#241c18', color: '#b88770', border: '#3a2c25' },
+  CRITIQUE: { bg: '#281818', color: '#c46868', border: '#402626' },
 }
 
 const NIVEAU_GRADIENTS = {
-  FAIBLE: 'linear-gradient(135deg, #1a3a1a, #0d1f0d)',
-  MOYEN: 'linear-gradient(135deg, #3a2a1a, #1f1a0d)',
-  ÉLEVÉ: 'linear-gradient(135deg, #3a1a1a, #1f0d0d)',
-  CRITIQUE: 'linear-gradient(135deg, #4a0a0a, #200505)',
+  FAIBLE: 'linear-gradient(135deg, #1f242c, #12161c)',
+  MOYEN: 'linear-gradient(135deg, #241f18, #15110d)',
+  ÉLEVÉ: 'linear-gradient(135deg, #241c18, #15100d)',
+  CRITIQUE: 'linear-gradient(135deg, #281818, #160c0c)',
 }
 
-const RISK_COLOR = (n) => (n > 35 ? '#ff4455' : n >= 20 ? '#ff8844' : '#ffaa33')
+const RISK_COLOR = (n) => (n > 35 ? '#c46868' : n >= 20 ? '#b88770' : '#b4a47e')
 
 function fmt(n) {
   return new Intl.NumberFormat('fr-CH').format(n)
@@ -30,9 +30,9 @@ function IosToggle({ on, onClick }) {
         width: 52,
         height: 28,
         borderRadius: 14,
-        background: on ? '#3a3aaa' : '#1a1a2e',
-        border: on ? 'none' : '1px solid #2a2a4a',
-        boxShadow: on ? '0 0 10px rgba(100,100,220,0.5)' : 'none',
+        background: on ? '#4d4d77' : '#22222e',
+        border: on ? '1px solid #6a6a88' : '1px solid #34343e',
+        boxShadow: 'none',
         cursor: 'pointer',
         padding: 0,
         transition: 'all 0.25s ease',
@@ -63,7 +63,6 @@ export default function ProjectCard({ projet, onInfoClick }) {
   const isActive = projetsActifs.includes(projet.id)
   const canAfford = compteEnBanque >= projet.coutAchat
   const niveau = NIVEAU_STYLES[projet.niveau] ?? NIVEAU_STYLES.FAIBLE
-  const isCritique = projet.niveau === 'CRITIQUE'
 
   const handleBuy = () => {
     sounds.playPurchase()
@@ -83,12 +82,14 @@ export default function ProjectCard({ projet, onInfoClick }) {
           onClick={handleBuy}
           style={styles.buyButton}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #2a6a2a, #1a4a1a)'
-            e.currentTarget.style.boxShadow = '0 0 12px rgba(68,221,136,0.3)'
+            e.currentTarget.style.background = 'linear-gradient(135deg, #2e4530, #1f2e1c)'
+            e.currentTarget.style.borderColor = '#6fa078'
+            e.currentTarget.style.color = '#c4dcc4'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #1a4a1a, #0d2a0d)'
-            e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.background = 'linear-gradient(135deg, #1f2e1c, #162216)'
+            e.currentTarget.style.borderColor = '#5a8260'
+            e.currentTarget.style.color = '#a5c8a5'
           }}
         >
           ACHETER - {fmt(projet.coutAchat)} CHF
@@ -130,10 +131,10 @@ export default function ProjectCard({ projet, onInfoClick }) {
   const cardStyle = isActive
     ? {
       ...styles.card,
-      border: '1px solid #4444aa',
-      borderLeft: '3px solid #6666dd',
-      background: 'linear-gradient(135deg, rgba(30,30,80,0.6), rgba(8,8,20,0.6))',
-      boxShadow: '0 0 20px rgba(68,68,187,0.15)',
+      border: '1px solid #2e2e3c',
+      borderLeft: '2px solid #5a5a7a',
+      background: 'linear-gradient(135deg, rgba(28,28,40,0.55), rgba(10,10,15,0.55))',
+      boxShadow: 'none',
     }
     : styles.card
 
@@ -180,7 +181,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
               color: niveau.color,
               border: `1px solid ${niveau.border}`,
               letterSpacing: '0.1em',
-              animation: isCritique ? 'pulse-red 2s infinite' : 'none',
+              animation: 'none',
             }}
           >
             {projet.niveau}
@@ -191,9 +192,9 @@ export default function ProjectCard({ projet, onInfoClick }) {
                 width: 22,
                 height: 22,
                 borderRadius: '50%',
-                background: 'rgba(102,102,221,0.1)',
-                border: '1px solid #3333aa',
-                color: '#6666dd',
+                background: 'transparent',
+                border: '1px solid #44444f',
+                color: '#9a9aac',
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: 700,
                 fontSize: 12,
@@ -259,7 +260,7 @@ export default function ProjectCard({ projet, onInfoClick }) {
               fontFamily: 'JetBrains Mono, monospace',
               fontWeight: 600,
               fontSize: 12,
-              color: '#44dd88',
+              color: '#95bc9c',
             }}
           >
             +{fmt(projet.revenuQuotidien)} CHF/j
@@ -304,15 +305,14 @@ const styles = {
   buyButton: {
     padding: '10px 20px',
     borderRadius: 4,
-    background: 'linear-gradient(135deg, #1a4a1a, #0d2a0d)',
-    border: '1px solid #44aa44',
-    color: '#44dd88',
+    background: 'linear-gradient(135deg, #1f2e1c, #162216)',
+    border: '1px solid #5a8260',
+    color: '#a5c8a5',
     fontWeight: 600,
     fontSize: 11,
     letterSpacing: '0.1em',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    animation: 'pulse-green-border 2.2s infinite',
   },
   lockedButton: {
     padding: '10px 20px',
@@ -333,7 +333,7 @@ const styles = {
   labelActive: {
     fontWeight: 600,
     fontSize: 12,
-    color: '#8888ee',
+    color: '#aaaad0',
     letterSpacing: '0.1em',
   },
   labelInactive: {
@@ -345,6 +345,6 @@ const styles = {
   earningsText: {
     fontFamily: 'JetBrains Mono, monospace',
     fontSize: 10,
-    color: '#44dd88',
+    color: '#95bc9c',
   },
 }
